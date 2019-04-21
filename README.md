@@ -1,5 +1,5 @@
 # discord-raffle-bot
-A simple bot for holding real time raffles on Discord.
+A simple bot for saving all of the messages from a Discord server into a Database.
 
 ## Requirements
 
