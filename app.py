@@ -1,39 +1,21 @@
 #app.py
-import discord, asyncio
+import discord
+import utils, config
 
 client = discord.Client()
 
-
-async def get_all_messages():
-	messages = []
-
-	guild = client.guilds[0]
-	channels = guild.channels
-
-	for channel in channels:
-		try:
-			async for message in channel.history(limit=10000):
-				if message.content == "":
-					continue
-
-				final_message = {
-					"channel" : message.channel.name,
-					"author" : message.author.name,
-					"content" : message.content
-				}
-
-				messages.append(final_message)
-		except AttributeError:
-			pass
-
-	return messages
-
-
 @client.event
 async def on_ready():
-	print(await get_all_messages())
+  # Retrieve the server based on provided ID
+  guild = client.get_guild(config.SERVER_ID)
+  if guild == None:
+    raise Exception("Incorrect ID")
 
+  # Run all of the scraping & database functions.
+  messages = await utils.get_all_messages(guild)
+  utils.store_messages(messages)
 
-AUTH = ""
+  # Quit the script.
+  await client.logout()
 
-client.run(AUTH, bot=True)
+client.run(config.AUTH_TOKEN, bot=config.AUTH_BOOL)
