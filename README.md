@@ -1,4 +1,4 @@
-# discord-raffle-bot
+# discord-scrape-bot
 A simple bot for saving all of the messages from a Discord server into a Database.
 
 ## Requirements
