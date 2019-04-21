@@ -3,12 +3,12 @@
 # Auth Token for the Discord Bot
 AUTH_TOKEN = ""
 # Set to False if you're using an User Token instead of a Bot Token
-AUTH_BOOL = True 
+AUTH_BOOL = False
 
 # Target Server's ID.
 # Can be retrieved by right-clicking the server and choosing "Copy ID"
 
-SERVER_ID = 123 # INT not STR!
+SERVER_ID = 123  # INT not STR!
 
 MESSAGE_LIMIT = 20000
 
